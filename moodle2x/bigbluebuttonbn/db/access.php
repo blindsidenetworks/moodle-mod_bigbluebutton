@@ -14,8 +14,18 @@
 defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
-	
-	//
+    // Ability to add an instance to the course page
+    'mod/bigbluebuttonbn:addinstance' => array(
+        'riskbitmask' => RISK_XSS,
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'archetypes' => array(
+            'editingteacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW
+        ),
+        'clonepermissionsfrom' => 'moodle/course:manageactivities'
+    ),
+
 	// Ability to join a meeting
     'mod/bigbluebuttonbn:join' => array(
         'captype' => 'read',
@@ -28,7 +38,6 @@ $capabilities = array(
         )
     ),
 
-	//
 	// Ability to moderate a meeting
 	'mod/bigbluebuttonbn:moderate' => array(
 	    'captype' => 'write',
@@ -40,5 +49,3 @@ $capabilities = array(
 	    )
 	)
 );
-
-?>

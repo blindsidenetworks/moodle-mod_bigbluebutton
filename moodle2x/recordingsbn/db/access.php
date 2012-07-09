@@ -14,6 +14,17 @@
 defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
+    // Ability to add an instance to the course page
+    'mod/bigbluebuttonbn:addinstance' => array(
+        'riskbitmask' => RISK_XSS,
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'archetypes' => array(
+            'editingteacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW
+        ),
+        'clonepermissionsfrom' => 'moodle/course:manageactivities'
+    ),
 
     'mod/recordingsbn:view' => array(
         'captype' => 'read',
@@ -28,4 +39,3 @@ $capabilities = array(
     ),
 
 );
-
